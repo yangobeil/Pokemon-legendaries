@@ -8,7 +8,7 @@ We use the following 4 classification algorithms and pick the result from the be
 - k-Nearest Neighbors with 5 neighbors
 - Random forest
 
-## Dataset and cleaning the data
+## Data
 
 The dataset contains 800 examples and 13 features
 
@@ -32,23 +32,23 @@ First of all there are null entries in the 'Type 2' feature. Since these don't c
 
 Next we scan the 'Name' variable to see if a Pokemon is a mega evolution and we store this in a new variable called 'Mega'. We create a separate dataset where we eliminate the mega evolutions because they might get confused for legendaries.
 
-## Visualization
+## Features
 
 Let's summarize a few of the most important relations visible in the data. 
 
-## Classification
+By plotting the distribution of types, we see that there seems to be favored and disfavored types for legendaries, which don't necessarily correlate with the most popular types for non legendaries. This is not significant enough to allow directly to classify legendaries but should be a nice piece of the puzzle.
 
-### Including megas
+By studying the distribution of total skills we see a clear trend that the legendaries have higher total points. This will be extremely important to help us in our taks.
 
-We first 
+The generation and dual type features don't seem to discriminate between legendaries and non legendaries almost at all. Of course the name and number features don't tell us anything here.
 
-### Excluding megas
+Finally the distribution of total skills for mega evolutions is pretty similar to the one for legendaries so including may cause some confusion and it will hopefully be better to ignore them.
 
 
 ## Conclusions
 
-We end up being able to predict with great accuracy if a Pokemon is legendary (around %). However since there are so few positive cases (65 legendaries out of 800 Pokemons) a better metric is the F1 score, which is a little bit lower but still good (around ). Getting rid of the mega evolutions helps improve the succes rate, most likely because they are strong so they look like legendaries even though they are not.
+The best algorithms seem to be kNN and random forest. We end up being able to predict with great accuracy if a Pokemon is legendary (around 96%). However since there are so few positive cases (65 legendaries out of 800 Pokemons) a better metric is the macro F1 score, which is a little bit lower but still good (around 87%). Getting rid of the mega evolutions helps improve the succes rate, most likely because they are strong so they look like legendaries even though they are not.
 
-By looking at the examples that were wrongly classified we see a remaining problem in the data that may cause some errors. It turns out that there are Pokemons called mythical that have characteristics similar to legendaries but are officialy not (ex. Celebi or Manaphy). We could potentially get a better result by labeling them as legendaries.
+By looking at the examples that were wrongly classified we see a remaining problem in the data that may cause some errors. It turns out that there are Pokemons called mythical that have characteristics similar to legendaries but are officialy not (ex. Genesect or Cresselia). We could potentially get a better result by labeling them as legendaries.
 
 Like mentionned above this is not the best dataset available on the web. There are better datasets that include features such as weight, height and catch rate. They also include each Pokemon once (no megas) and classify mythicals as legendary. I discovered this after fiishing this project and since the goal is just to learn the method and not to get the best model I didn't start over with the new data.
